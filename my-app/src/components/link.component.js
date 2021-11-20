@@ -5,7 +5,7 @@ import axios from 'axios';
 const LinkToken = props => {
     const onSuccess = (token, metadata) => {
       // send token to server
-      axios.post('http://localhost:5000/link/api/set_access_token', {public_token: token})
+      axios.post('http://localhost:5000/api/set_access_token', {public_token: token})
       window.location = '/success';
     };
 

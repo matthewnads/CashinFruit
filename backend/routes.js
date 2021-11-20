@@ -86,7 +86,12 @@ router.route('/api/set_access_token').post((request, response) => {
     ACCESS_TOKEN = res.data.access_token;
     ITEM_ID = res.data.item_id;
     //have to update currentUser with these tokens
+    currentUser.item_id = ACCESS_TOKEN;
+    currentUser.access_token = ITEM_ID;
 
+    currentUser.save()
+    .then(()=>res.json('Plaid connection success'))
+    .catch(err=>res.status(400).json('Plaid Error: '+ err));
   
   
   }).catch((error)=>{
@@ -104,7 +109,7 @@ router.route('/add').post((req,res)=>{
   const budget = Number(req.body.budget);
   const current = Number(req.body.current);
 
-  console.log(firstname); 
+
   //saving into database 
   currentUser.firstname = firstname; 
   currentUser.lastname = lastname; 
