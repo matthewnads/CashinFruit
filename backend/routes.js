@@ -96,7 +96,24 @@ router.route('/api/set_access_token').post((request, response) => {
 
 }); 
 
-router.route('/add').get((req,res)=>{
-  //add to mongodb
+router.route('/add').post((req,res)=>{
+  //getting user info from database 
+  const firstname = req.body.firstname; 
+  const lastname = req.body.lastname; 
+  const phone = Number(req.body.phone);
+  const budget = Number(req.body.budget);
+  const current = Number(req.body.current);
+
+  console.log(firstname); 
+  //saving into database 
+  currentUser.firstname = firstname; 
+  currentUser.lastname = lastname; 
+  currentUser.phone = phone; 
+  currentUser.budget = budget; 
+  currentUser.current = current; 
+
+  currentUser.save()
+  .then(()=>res.json('User added!'))
+  .catch(err=> res.status(400).json('Error: '+ err)); 
 })
 module.exports = router;
