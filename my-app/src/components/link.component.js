@@ -6,7 +6,7 @@ const LinkToken = props => {
     const onSuccess = (token, metadata) => {
       // send token to server
       axios.post('http://localhost:5000/link/api/set_access_token', {public_token: token})
-      window.location = '/items';
+      window.location = '/success';
     };
 
     const onExit = (error, metadata) => {

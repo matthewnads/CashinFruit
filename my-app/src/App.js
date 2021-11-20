@@ -48,7 +48,7 @@ export default class App extends Component{
             <div className="container d-flex justify-content-center">
               <div className="my-auto justify-center " >
                 {show}
-                <Route path='/items' component ={LinkChild}></Route>
+                <Route path='/success' component ={LinkChild}></Route>
               </div>
             </div>
           </div>

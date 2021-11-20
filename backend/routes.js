@@ -72,6 +72,30 @@ router.route('/create').post((req,res)=> {
   
 });
 
+router.route('/api/set_access_token').post((request, response) => {
+  PUBLIC_TOKEN = request.body.public_token; 
+
+  const data = {
+    client_id: PLAID_CLIENT_ID,
+    secret: PLAID_SECRET,
+    public_token: PUBLIC_TOKEN
+  }
+  
+  
+  axios.post(host+'/item/public_token/exchange',data).then((res)=>{
+    ACCESS_TOKEN = res.data.access_token;
+    ITEM_ID = res.data.item_id;
+    //have to update currentUser with these tokens
+
+  
+  
+  }).catch((error)=>{
+    console.log(error)
+  })
+
+
+}); 
+
 router.route('/add').get((req,res)=>{
   //add to mongodb
 })
