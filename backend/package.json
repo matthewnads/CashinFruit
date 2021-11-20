@@ -17,6 +17,7 @@
     "moment": "^2.29.1",
     "mongoose": "^6.0.13",
     "plaid": "^9.7.0",
+    "react": "^17.0.2",
     "react-router-dom": "^6.0.2"
   }
 }
