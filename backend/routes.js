@@ -119,4 +119,12 @@ router.route('/add').post((req,res)=>{
   .then(()=>res.json('User added!'))
   .catch(err=> res.status(400).json('Error: '+ err)); 
 })
+
+
+/**
+ * Route for webhooks 
+ */
+router.route('/hooks').post((req,res)=>{
+  
+})
 module.exports = router;
