@@ -39,7 +39,40 @@ router.route('/').get((req,res)=>{
     res.send("hello world")
 })
 
+/**
+ * Token exchange process: 
+ * Get link by calling /link/token/create
+ * initialize link by passing the link token, and getting a public_token after success 
+ * exchange the public token for an access token by calling /item/public_token/exchange 
+ */
 router.route('/create').post((req,res)=> {
 //use this to create the link token 
+    const data = {
+        user: {
+        // This should correspond to a unique id for the current user.
+        client_user_id: 'user-id',
+        },
+        client_name: 'Budget Bud',
+        products: PLAID_PRODUCTS,
+        country_codes: PLAID_COUNTRY_CODES,
+        language: 'en',
+        webhook: hook,
+        client_id: PLAID_CLIENT_ID,
+        secret: PLAID_SECRET,
+        redirect_uri: PLAID_REDIRECT_URI
+    };
+
+  axios.post(host+'/link/token/create', data).then((response)=>{
+    linkToken = response.data.link_token; 
+    res.json(response.data.link_token);
+  }).catch((error)=>{
+    console.log(error)
+  });
+
+  
 });
+
+router.route('/add').get((req,res)=>{
+  //add to mongodb
+})
 module.exports = router;
