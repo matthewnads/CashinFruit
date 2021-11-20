@@ -28,6 +28,7 @@ export default class App extends Component{
         linkToken: token 
     });
   }
+  
   render(){
 
     let show; 

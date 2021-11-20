@@ -3,6 +3,11 @@ const cors= require('cors');
 const mongoose = require('mongoose');
 var path = require('path');
 require('dotenv').config(); 
+const twilio = require('twilio');
+const accountSid = 'AC896a4d16930bd6c04578da0277f55303';
+const authToken = 'c292f6b938e29080c7be83df1d402c68';
+const client = new twilio(accountSid, authToken);
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
 const app = express(); 
 const port = process.env.PORT||5000; 
@@ -25,4 +30,5 @@ app.use('', routes)
 
 app.listen(port, () => {
     console.log(`Server be running on port: ${port}`); 
+
 }); 

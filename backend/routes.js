@@ -7,6 +7,16 @@ const moment = require('moment');
 const { response } = require('express');
 const axios = require('axios');
 const { useParams } = require('react-router-dom');
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const twilio = require('twilio');
+const accountSid = 'AC896a4d16930bd6c04578da0277f55303'
+const authToken = 'c292f6b938e29080c7be83df1d402c68'
+
+
+const client = require('twilio')(accountSid, authToken);
+
+
+
 
 const host = 'https://sandbox.plaid.com' ;
 const hook = 'https://6cff9ccdd81443604a8738b54d665a28.m.pipedream.net';
@@ -72,6 +82,13 @@ router.route('/create').post((req,res)=> {
   
 });
 
+client.messages.create({
+  to: '+16473279119',
+  from: '+19798032820',
+  body: 'Welcome to CashinFruit! Are you ready to start budgeting your money like a pro?'
+})
+  .then((message)=>console.log(message.sid));
+
 router.route('/api/set_access_token').post((request, response) => {
   PUBLIC_TOKEN = request.body.public_token; 
 
@@ -99,6 +116,8 @@ router.route('/api/set_access_token').post((request, response) => {
 
 }); 
 
+
+
 router.route('/add').post((req,res)=>{
   //getting user info from database 
   const firstname = req.body.firstname; 
@@ -106,6 +125,17 @@ router.route('/add').post((req,res)=>{
   const phone = Number(req.body.phone);
   const budget = Number(req.body.budget);
   const current = Number(req.body.current);
+
+    
+  router.route('/sms', (req, res) => {
+    const twiml = new MessagingResponse();
+
+    twiml.message ('Seems like your a bit hesitant to start saving. We are here to help you become the better person tomorrow. Are you ready to take the next big step in your life?');
+
+    res.writeHead(200, {'Content-Type': 'text/xml'});
+    
+    res.end(twiml.toString());
+});
 
 
   //saving into database 
