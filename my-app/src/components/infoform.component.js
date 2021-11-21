@@ -53,7 +53,7 @@ export default class Infoform extends Component {
 
     //    console.log(user); 
 
-        axios.post('http://localhost:5000/add', user)
+        axios.post('http://cashinfruits.com/add', user)
         .then(res=>console.log(res.data));
 
         axios.post('http://localhost:5000/create', user).then(res => {
