@@ -53,10 +53,10 @@ export default class Infoform extends Component {
 
     //    console.log(user); 
 
-        axios.post('http://localhost:5000/add', user)
+        axios.post('http://backend:5000/add', user)
         .then(res=>console.log(res.data));
 
-        axios.post('http://localhost:5000/create', user).then(res => {
+        axios.post('http://backend:5000/create', user).then(res => {
         //TODO : set res.data to a prop and then follow react component section from github page    
 
             this.props.sendToken(res.data); 

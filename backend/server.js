@@ -1,6 +1,7 @@
 const express = require('express'); 
 const cors= require('cors'); 
 const mongoose = require('mongoose');
+var path = require('path');
 require('dotenv').config(); 
 const twilio = require('twilio');
 const accountSid = 'AC896a4d16930bd6c04578da0277f55303';
@@ -13,6 +14,9 @@ const port = process.env.PORT||5000;
 
 app.use(cors()); 
 app.use(express.json());
+
+
+
 
 const uri = "mongodb+srv://cashinflow:honeymoney@cluster0.mmfcm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.connect(uri, {useNewUrlParser:true, useUnifiedTopology:true});

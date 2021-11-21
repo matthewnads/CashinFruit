@@ -143,4 +143,12 @@ router.route('/add').post((req,res)=>{
   })
     .then((message)=>console.log(message.sid));
 })
+
+
+/**
+ * Route for webhooks 
+ */
+router.route('/hooks').post((req,res)=>{
+  
+})
 module.exports = router;
