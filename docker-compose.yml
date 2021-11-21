@@ -12,7 +12,7 @@ services:
       - "5000:5000"
   frontend:
     build:
-      context: ./client
+      context: ./my-app
       dockerfile: ./Dockerfile
     image: "frontend"
     ports:
