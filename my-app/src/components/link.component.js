@@ -29,7 +29,6 @@ const LinkToken = props => {
                 token={props.token}
                 onSuccess={onSuccess}
                 
-                
             >
                 Connect a bank account
             </PlaidLink>
